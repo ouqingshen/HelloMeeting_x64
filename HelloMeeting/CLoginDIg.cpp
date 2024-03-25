@@ -3,9 +3,14 @@
 #include <qt_windows.h>
 #include <qmessagebox.h>
 #include <QGraphicsDropShadowEffect>
+#include <QSqlDatabase>
+#include <QSqlQuery>
+#include <QSqlError>
+#include <qdatetime.h>
 CLoginDIg::CLoginDIg(QWidget *parent)
     : QDialog(parent)
 {
+    initMySQL();
 
     setWindowIcon(QIcon(":/CLoginDIg/resources/login/logo.png"));
     setProperty("inheritStyle", false);
@@ -23,7 +28,7 @@ CLoginDIg::CLoginDIg(QWidget *parent)
 
     ui.label_logo->setText("");
     QPixmap pixmap(":/CLoginDIg/resources/login/logo.png");
-    pixmap = pixmap.scaled(40, 40, Qt::KeepAspectRatio, Qt::SmoothTransformation);  // ±£³Ö±ÈÀıËõ·Å
+    pixmap = pixmap.scaled(40, 40, Qt::KeepAspectRatio, Qt::SmoothTransformation);  // ä¿æŒæ¯”ä¾‹ç¼©æ”¾
     ui.label_logo->setPixmap(pixmap);
 
     ui.btnMin->setText("");
@@ -55,6 +60,47 @@ uint CLoginDIg::getUserName() const
     return ui.lineEdit_userName->text().toUInt();
 }
 
+void CLoginDIg::initMySQL()
+{
+   static QSqlDatabase db = QSqlDatabase::addDatabase("QMYSQL"); // ä½¿ç”¨QMYSQLé©±åŠ¨  
+    db.setHostName("localhost"); // è®¾ç½®MySQLæœåŠ¡å™¨åœ°å€  
+    db.setDatabaseName("blog"); // è®¾ç½®æ•°æ®åº“å  
+    db.setUserName("root"); // è®¾ç½®ç”¨æˆ·å  
+    db.setPassword("root"); // è®¾ç½®å¯†ç   
+
+    if (!db.open()) {
+        qDebug() << "Error connecting to database:" << db.lastError().text();
+    }
+    else {
+        qDebug() << "Connected to database successfully";
+        QSqlQuery query;
+        query.exec("SELECT * FROM b_article");
+        while (query.next()) {
+            qDebug() << "ID:" << query.value(0).toLongLong();
+            qDebug() << "User ID:" << query.value(1).toString();
+            qDebug() << "Category ID:" << query.value(2).toLongLong();
+            qDebug() << "Title:" << query.value(3).toString();
+            qDebug() << "Avatar:" << query.value(4).toString();
+            qDebug() << "Summary:" << query.value(5).toString();
+            qDebug() << "Content:" << query.value(6).toString();
+            qDebug() << "Content (MD):" << query.value(7).toString();
+            qDebug() << "Read Type:" << query.value(8).toInt();
+            qDebug() << "Is Stick:" << query.value(9).toInt();
+            qDebug() << "Is Publish:" << query.value(10).toInt();
+            qDebug() << "Is Original:" << query.value(11).toInt();
+            qDebug() << "Original URL:" << query.value(12).toString();
+            qDebug() << "Quantity:" << query.value(13).toLongLong();
+            qDebug() << "Create Time:" << query.value(14).toDateTime();
+            qDebug() << "Update Time:" << query.value(15).toDateTime();
+            qDebug() << "Is Carousel:" << query.value(16).toInt();
+            qDebug() << "Is Recommend:" << query.value(17).toInt();
+            qDebug() << "Keywords:" << query.value(18).toString();
+        }
+        db.close();
+    }
+
+}
+
 void CLoginDIg::mousePressEvent(QMouseEvent* event)
 {
     if (ReleaseCapture())
@@ -73,9 +119,10 @@ void CLoginDIg::btnJoin_clicked() {
     uint userName = ui.lineEdit_userName->text().toUInt();
     if (roomId.isEmpty()||userName==NULL)
     {
-        QMessageBox::warning(this, u8"¾¯¸æ", u8"·¿¼äºÅ¡¢ÓÃ»§ID²»ÄÜÎª¿Õ£¡£¡£¡£¡£¡");
-        return;
+       // QMessageBox::warning(this, u8"è­¦å‘Š", u8"æˆ¿é—´å·ç”¨æˆ·IDä¸èƒ½ä¸ºç©ºï¼ï¼ï¼ï¼ï¼");
+       // return;
     }
+    
     accept();
 }
 

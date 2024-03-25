@@ -13,6 +13,7 @@ public:
 
     QString getRoomId() const;
     uint getUserName() const;
+    void initMySQL();
 
     void mousePressEvent(QMouseEvent* event) override;
 
