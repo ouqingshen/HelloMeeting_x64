@@ -1,0 +1,30 @@
+<RCC>
+    <qresource prefix="/CLoginDIg">
+        <file>resources/login/close.svg</file>
+        <file>resources/login/close_hover.svg</file>
+        <file>resources/login/logo.png</file>
+        <file>resources/login/min.svg</file>
+        <file>resources/login/min_hover.svg</file>
+        <file>resources/login/login_netstatus.svg</file>
+        <file>resources/login/login_set.svg</file>
+        <file>resources/login/login_set_hover.svg</file>
+        <file>resources/login/login_right.jpg</file>
+        <file>resources/login/max.svg</file>
+    </qresource>
+    <qresource prefix="/BottomBar">
+        <file>resources/bottomBar/microphone_hover.svg</file>
+        <file>resources/bottomBar/microphone_off.svg</file>
+        <file>resources/bottomBar/microphone_on.svg</file>
+        <file>resources/bottomBar/microphoneHover_off.svg</file>
+        <file>resources/bottomBar/allScreen.svg</file>
+        <file>resources/bottomBar/application.svg</file>
+        <file>resources/bottomBar/Camera.svg</file>
+        <file>resources/bottomBar/chat.svg</file>
+        <file>resources/bottomBar/groupschat.svg</file>
+        <file>resources/bottomBar/invite.svg</file>
+        <file>resources/bottomBar/security.svg</file>
+        <file>resources/bottomBar/setting.svg</file>
+        <file>resources/bottomBar/memberManagement.svg</file>
+        <file>resources/bottomBar/ScreenShare.svg</file>
+    </qresource>
+</RCC>
