@@ -1,5 +1,6 @@
 #pragma once
 #include <vector>
+#include <QCryptographicHash>
 #include <QPixmap>
 using namespace std;
 //左侧小视频窗口的宽高

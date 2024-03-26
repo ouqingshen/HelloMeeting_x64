@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>828</width>
-    <height>722</height>
+    <width>756</width>
+    <height>683</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -468,6 +468,13 @@ QPushButton:checked{
             </property>
             <property name="checked">
              <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btn_register">
+            <property name="text">
+             <string>注册</string>
             </property>
            </widget>
           </item>

@@ -98,6 +98,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="CRegisterDlg.cpp" />
     <ClCompile Include="ShareScreenDialog.cpp" />
     <QtRcc Include="HelloMeeting.qrc" />
     <QtUic Include="CLoginDIg.ui" />
@@ -113,11 +114,13 @@
     <ClCompile Include="CSmallVideoWidget.cpp" />
     <ClCompile Include="CTitleBar.cpp" />
     <ClCompile Include="main.cpp" />
+    <QtUic Include="CRegisterDlg.ui" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="agoraconfig.h" />
     <ClInclude Include="CFraneLessWidgetBase.h" />
     <ClInclude Include="commons.h" />
+    <QtMoc Include="CRegisterDlg.h" />
     <QtMoc Include="ShareScreenDialog.h" />
     <QtMoc Include="CTitleBar.h" />
     <QtMoc Include="CSmallVideoWidget.h" />

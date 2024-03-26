@@ -67,6 +67,9 @@
     <ClCompile Include="ShareScreenDialog.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CRegisterDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="agoraconfig.h">
@@ -110,9 +113,15 @@
     <QtMoc Include="ShareScreenDialog.h">
       <Filter>Header Files</Filter>
     </QtMoc>
+    <QtMoc Include="CRegisterDlg.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="CLoginDIg.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="CRegisterDlg.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>
