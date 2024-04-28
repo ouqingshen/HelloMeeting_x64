@@ -7,6 +7,7 @@
 #include <QSqlQuery>
 #include <QSqlError>
 #include <qdatetime.h>
+#include <QCryptographicHash>
 
 CLoginDIg::CLoginDIg(QWidget *parent)
     : QDialog(parent)
@@ -91,6 +92,8 @@ void CLoginDIg::mousePressEvent(QMouseEvent* event)
 }
 
 
+
+
 void CLoginDIg::btnJoin_clicked() {
     QString roomId = ui.lineEdit_roomId->text();
     QString userName = ui.lineEdit_userName->text();
@@ -100,9 +103,22 @@ void CLoginDIg::btnJoin_clicked() {
         QMessageBox::warning(this, u8"警告", u8"房间号用户ID不能为空");
        return;
     }
+    //loginUser(userName, password);
+   
+    else if (loginUser(userName, password)) {
+        // 登录成功，显示成功消息或执行其他操作  
+        QMessageBox::information(this, "Success", "Login successful.");
+        // 这里可以添加跳转到主界面的代码等    
+        accept();
+    }
+    else {
+        // 登录失败，显示错误消息  
+        QMessageBox::critical(this, "Error", "Invalid username or password.");
+        return;
+    }
 
 
-    accept();
+  
 }
 
 
@@ -120,4 +136,59 @@ void CLoginDIg::on_titleBar_clicked() {
         t_window->close();
     }
   
+}
+
+bool CLoginDIg::loginUser(const QString& userName, const QString& password)
+{
+
+    // 创建或获取数据库连接  
+    QSqlDatabase db = QSqlDatabase::database();
+    if (!db.isOpen()) {
+        // 处理数据库未打开的情况  
+        qDebug() << "Database is not open.";
+        return false;
+    }
+
+    // 准备SQL查询语句  
+    QString sql = "SELECT password_hash, salt FROM users WHERE username = :username";
+    QSqlQuery query;
+    query.prepare(sql);
+    query.bindValue(":username", userName);
+
+    // 执行查询  
+    if (!query.exec()) {
+        // 处理SQL执行失败的情况  
+        qDebug() << "Error executing query:" << query.lastError().text();
+        return false;
+    }
+    // 检查查询结果  
+    if (query.next()) {
+        const QByteArray storedHash = query.value(0).toByteArray();
+        //const QByteArray salt = QByteArray::fromHex(query.value(1).toByteArray());
+
+        const QString salt111 = query.value(1).toString();
+        const QByteArray salt = QByteArray::fromHex(salt111.toUtf8());
+        //qDebug() << query.value(1) << endl;
+        //qDebug() << query.value(0) << endl;
+        qDebug() << storedHash << endl;
+        qDebug() << salt<< endl;
+        qDebug() << password << endl;
+        // 使用相同的哈希算法和盐值对用户提供的密码进行哈希处理  
+        QByteArray passwordHash = QCryptographicHash::hash((password + salt).toUtf8(), QCryptographicHash::Sha256).toHex();
+        qDebug() << passwordHash;
+        // 比较存储的哈希值和计算的哈希值是否相同  
+        if (passwordHash==storedHash) {
+            // 哈希值匹配，登录成功  
+            return true;
+        }
+        else {
+            // 哈希值不匹配，登录失败  
+            return false;
+        }
+    }
+    else {
+        // 没有找到对应的用户名，登录失败  
+        return false;
+    }
+
 }

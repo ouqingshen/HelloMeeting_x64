@@ -15,6 +15,7 @@ public:
     uint getUserName() const;
 
     void mousePressEvent(QMouseEvent* event) override;
+    bool loginUser(const QString& userName, const QString& password);
 
 public slots:
     void on_titleBar_clicked();

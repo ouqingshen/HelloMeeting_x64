@@ -30,6 +30,11 @@ CRegisterDlg::~CRegisterDlg()
 void CRegisterDlg::btn_register_ok() {
 	QString userName = ui->lineEdit_userName->text();
 	QString password = ui->lineEdit_passWord->text();
+    if (userName.isEmpty() || password.isEmpty())
+    {
+        QMessageBox::warning(this, u8"警告", u8"房间号用户ID不能为空");
+        return;
+    }
     if (!registerUser(userName, password)) { 
         QMessageBox::critical(this, "Error",u8"注册失败");
         return;
@@ -60,11 +65,10 @@ bool CRegisterDlg::registerUser(const QString& userName, const QString& password
 
   
     QByteArray salt = QCryptographicHash::hash(QByteArray::number(QRandomGenerator::global()->bounded(1000000000)), QCryptographicHash::Sha256);
-
-
-    QByteArray passwordHash = QCryptographicHash::hash((password + salt).toUtf8(), QCryptographicHash::Sha256);
-
-  
+    qDebug() << salt << endl;
+    QByteArray passwordHash = QCryptographicHash::hash((password + salt).toUtf8(), QCryptographicHash::Sha256)/*.toHex()*/;
+    qDebug() << passwordHash;
+ 
     QString sql = "INSERT INTO users (username, salt ,password_hash) VALUES (:username,:salt, :password_hash )";
     QSqlQuery query;
 
@@ -78,12 +82,12 @@ bool CRegisterDlg::registerUser(const QString& userName, const QString& password
     if (!query.exec()) {
          
         qDebug() << "Error inserting user:" << query.lastError().text();
-        db.close();
+        //db.close();
         return false;
     }
 
 
-    db.close();
+   // db.close();
 
     return true;
 }
