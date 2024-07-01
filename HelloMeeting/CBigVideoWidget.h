@@ -11,6 +11,4 @@ public:
 	HWND getHwnd() const;
 
 private:
-
 };
-

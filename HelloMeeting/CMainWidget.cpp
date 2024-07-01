@@ -7,9 +7,10 @@
 #include <iostream>
 #include "commons.h"
 #include "ShareScreenDialog.h"
-#include <QScreen>  
+#include <QScreen>
 #include <QApplication>
 #include <QTime>
+#include <CLoginDIg.h>
 
 CMainWidget::CMainWidget(QWidget* p)
 	:CFraneLessWidgetBase(p)
@@ -19,13 +20,16 @@ CMainWidget::CMainWidget(QWidget* p)
 	m_pAgora = new CAgoraObject();
 
 	if (0 != m_pAgora->init()) {
-		QMessageBox::information(this, u8"提示", u8"agora init failure!");
+		QMessageBox::information(this, u8"鎻愮ず", u8"agora init failure!");
 		exit(EXIT_FAILURE);
 	}
 
 	connect(m_pAgora, &CAgoraObject::sender_joinedChannelSuccess, this, &CMainWidget::onLocalJoinedSuccess);
 	connect(m_pAgora, &CAgoraObject::sender_userJoined, this, &CMainWidget::onRemoteJoined);
-	connect(m_pTitleBar, &CTitleBar::sig_close, this, [&](){
+	connect(m_pTitleBar, &CTitleBar::sig_close, this, [&]() {
+		CLoginDIg* p = new CLoginDIg();
+		shared_ptr<CLoginDIg> o = make_shared<CLoginDIg>(p);
+		p->show();
 		close();
 		});
 }
@@ -58,7 +62,6 @@ void CMainWidget::resizeEvent(QResizeEvent* event)
 		time.restart();
 		//resize(w * 1.1, h * 1.1);
 	}
-
 }
 void CMainWidget::wheelEvent(QWheelEvent* event)
 {
@@ -98,21 +101,16 @@ void CMainWidget::initUI()
 
 	mainVlay->setContentsMargins(5, 5, 5, 5);
 
-	connect(m_pBottomBar,&CBottomBar::sig_close,this,&CMainWidget::onEndMeeting);
-	connect(m_pBottomBar, &CBottomBar::sig_shareScreen,this,&CMainWidget::on_ShareScreen);
-
-
+	connect(m_pBottomBar, &CBottomBar::sig_close, this, &CMainWidget::onEndMeeting);
+	connect(m_pBottomBar, &CBottomBar::sig_shareScreen, this, &CMainWidget::on_ShareScreen);
 }
 
-
-
-//本地加入成功
+//鏈湴鍔犲叆鎴愬姛
 void CMainWidget::onLocalJoinedSuccess(const QString& qsChannel, unsigned int uid, int elapsed)
 {
 	m_pAgora->LocalVideoPreview(m_pBigVideoWidget->getHwnd(), true);
-
 }
-//远程用户加入房间
+//杩滅▼鐢ㄦ埛鍔犲叆鎴块棿
 void CMainWidget::onRemoteJoined(uid_t uid, int elapsed)
 {
 	CSmallVideoWidget* pSmall = new CSmallVideoWidget();
@@ -123,9 +121,8 @@ void CMainWidget::onRemoteJoined(uid_t uid, int elapsed)
 
 void CMainWidget::onEndMeeting()
 {
-
+	shared_ptr<CLoginDIg> p = make_shared<CLoginDIg>(new CLoginDIg);
 	close();
-
 }
 
 void CMainWidget::on_ShareScreen()
@@ -135,25 +132,23 @@ void CMainWidget::on_ShareScreen()
 	ShareScreenDialog* share = new ShareScreenDialog;
 	share->initListWidget(vecWindowShare);
 
-
-	connect(share,&ShareScreenDialog::sig_StartShare,this,&CMainWidget::startShareScreen);
-	connect(share,&ShareScreenDialog::sig_StopShare,this,&CMainWidget::stopShareScreen);
+	connect(share, &ShareScreenDialog::sig_StartShare, this, &CMainWidget::startShareScreen);
+	connect(share, &ShareScreenDialog::sig_StopShare, this, &CMainWidget::stopShareScreen);
 	share->exec();
 }
 
-void CMainWidget::startShareScreen(int type,void* hwnd)
+void CMainWidget::startShareScreen(int type, void* hwnd)
 {
-	if (0!=m_pAgora->start_share_screen(type,hwnd))
+	if (0 != m_pAgora->start_share_screen(type, hwnd))
 	{
-		QMessageBox::information(this, u8"提示", u8"共享屏幕失败");
+		QMessageBox::information(this, u8"鎻愮ず", u8"鍏变韩灞忓箷澶辫触");
 	}
-
 }
 
 void CMainWidget::stopShareScreen()
 {
-	if (0!=m_pAgora->stop_share_window())
+	if (0 != m_pAgora->stop_share_window())
 	{
-		QMessageBox::information(this, u8"提示", u8"取消失败");
+		QMessageBox::information(this, u8"鎻愮ず", u8"鍙栨秷澶辫触");
 	}
 }

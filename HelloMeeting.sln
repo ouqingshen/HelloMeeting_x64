@@ -5,6 +5,8 @@ VisualStudioVersion = 17.7.34202.233
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HelloMeeting", "HelloMeeting\HelloMeeting.vcxproj", "{F7AF786E-433B-478B-AC35-CD4054D2092F}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TelegramClient", "..\WebSockerDemo\TelegramClient\TelegramClient\TelegramClient.vcxproj", "{F394EFEB-8375-4324-9028-8BD133BA59E8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -15,6 +17,10 @@ Global
 		{F7AF786E-433B-478B-AC35-CD4054D2092F}.Debug|x64.Build.0 = Debug|x64
 		{F7AF786E-433B-478B-AC35-CD4054D2092F}.Release|x64.ActiveCfg = Release|x64
 		{F7AF786E-433B-478B-AC35-CD4054D2092F}.Release|x64.Build.0 = Release|x64
+		{F394EFEB-8375-4324-9028-8BD133BA59E8}.Debug|x64.ActiveCfg = Debug|x64
+		{F394EFEB-8375-4324-9028-8BD133BA59E8}.Debug|x64.Build.0 = Debug|x64
+		{F394EFEB-8375-4324-9028-8BD133BA59E8}.Release|x64.ActiveCfg = Release|x64
+		{F394EFEB-8375-4324-9028-8BD133BA59E8}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

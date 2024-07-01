@@ -36,38 +36,38 @@ void CBottomBar::initUI()
      */
 
    
-     m_pAudioToolButton            = new CBottomBarTools(u8"Âó¿Ë·ç",":/BottomBar/resources/bottomBar/microphone_on.svg",
+     m_pAudioToolButton            = new CBottomBarTools(u8"éº¦å…‹é£Ž",":/BottomBar/resources/bottomBar/microphone_on.svg",
         ":/BottomBar/resources/bottomBar/microphone_hover.svg",
         ":/BottomBar/resources/bottomBar/microphone_off.svg",":/BottomBar/resources/bottomBar/microphoneHover_off.svg", true, this);
-     m_pCameraToolButton           = new CBottomBarTools(u8"ÉãÏñÍ·", ":/BottomBar/resources/bottomBar/Camera.svg",
+     m_pCameraToolButton           = new CBottomBarTools(u8"æ‘„åƒå¤´", ":/BottomBar/resources/bottomBar/Camera.svg",
         ":/BottomBar/resources/bottomBar/Camera.svg",
         ":/BottomBar/resources/bottomBar/Camera.svg", ":/BottomBar/resources/bottomBar/Camera.svg", true, this);
-    m_pShareScreenToolButton      = new CBottomBarTools(u8"ÆÁÄ»¹²Ïí",":/BottomBar/resources/bottomBar/ScreenShare.svg",
+    m_pShareScreenToolButton      = new CBottomBarTools(u8"å±å¹•å…±äº«",":/BottomBar/resources/bottomBar/ScreenShare.svg",
         ":/BottomBar/resources/bottomBar/ScreenShare.svg",
         ":/BottomBar/resources/bottomBar/ScreenShare.svg",":/BottomBar/resources/bottomBar/ScreenShare.svg", true, this);
-    m_pSecurityToolButton         = new CBottomBarTools(u8"°²È«",":/BottomBar/resources/bottomBar/security.svg",
+    m_pSecurityToolButton         = new CBottomBarTools(u8"å®‰å…¨",":/BottomBar/resources/bottomBar/security.svg",
         ":/BottomBar/resources/bottomBar/security.svg",
         ":/BottomBar/resources/bottomBar/security.svg",":/BottomBar/resources/bottomBar/security.svg", true, this);
-    m_pInvitationToolButton       = new CBottomBarTools(u8"ÑûÇë",":/BottomBar/resources/bottomBar/invite.svg",
+    m_pInvitationToolButton       = new CBottomBarTools(u8"é‚€è¯·",":/BottomBar/resources/bottomBar/invite.svg",
         ":/BottomBar/resources/bottomBar/invite.svg",
         ":/BottomBar/resources/bottomBar/invite.svg",":/BottomBar/resources/bottomBar/invite.svg", true, this);
-    m_pManageMemberToolButton     = new CBottomBarTools(u8"³ÉÔ±¹ÜÀí",":/BottomBar/resources/bottomBar/memberManagement.svg",
+    m_pManageMemberToolButton     = new CBottomBarTools(u8"æˆå‘˜ç®¡ç†",":/BottomBar/resources/bottomBar/memberManagement.svg",
         ":/BottomBar/resources/bottomBar/memberManagement.svg",
         ":/BottomBar/resources/bottomBar/memberManagement.svg",":/BottomBar/resources/bottomBar/memberManagement.svg", true, this);
-    m_pChatToolButton             = new CBottomBarTools(u8"ÁÄÌì",":/BottomBar/resources/bottomBar/chat.svg",
+    m_pChatToolButton             = new CBottomBarTools(u8"èŠå¤©",":/BottomBar/resources/bottomBar/chat.svg",
         ":/BottomBar/resources/bottomBar/chat.svg",
         ":/BottomBar/resources/bottomBar/chat.svg",":/BottomBar/resources/bottomBar/chat.svg", true, this);
 
-    m_pGroupDiscussionToolButton  = new CBottomBarTools(u8"Èº×éÁÄÌì",":/BottomBar/resources/bottomBar/groupschat.svg",
+    m_pGroupDiscussionToolButton  = new CBottomBarTools(u8"ç¾¤ç»„èŠå¤©",":/BottomBar/resources/bottomBar/groupschat.svg",
         ":/BottomBar/resources/bottomBar/groupschat.svg",
         ":/BottomBar/resources/bottomBar/groupschat.svg",":/BottomBar/resources/bottomBar/groupschat.svg.", true, this);
-    m_pApplicationToolButton      = new CBottomBarTools(u8"Ó¦ÓÃ",":/BottomBar/resources/bottomBar/application.svg",
+    m_pApplicationToolButton      = new CBottomBarTools(u8"åº”ç”¨",":/BottomBar/resources/bottomBar/application.svg",
         ":/BottomBar/resources/bottomBar/application.svg",
         ":/BottomBar/resources/bottomBar/application.svg",":/BottomBar/resources/bottomBar/application.svg", true, this);
-    m_pSetToolButton              = new CBottomBarTools(u8"ÉèÖÃ",":/BottomBar/resources/bottomBar/setting.svg",
+    m_pSetToolButton              = new CBottomBarTools(u8"è®¾ç½®",":/BottomBar/resources/bottomBar/setting.svg",
         ":/BottomBar/resources/bottomBar/setting.svg",
         ":/BottomBar/resources/bottomBar/setting.svg",":/BottomBar/resources/bottomBar/setting.svg", true, this);
-    m_pFullScreenButton           = new CBottomBarTools(u8"È«ÆÁ",":/BottomBar/resources/bottomBar/allScreen.svg",
+    m_pFullScreenButton           = new CBottomBarTools(u8"å…¨å±",":/BottomBar/resources/bottomBar/allScreen.svg",
         ":/BottomBar/resources/bottomBar/allScreen.svg",
         ":/BottomBar/resources/bottomBar/allScreen.svg",":/BottomBar/resources/bottomBar/allScreen.svg", true, this);
    
@@ -95,7 +95,7 @@ void CBottomBar::initUI()
     layout->addStretch();
     QPushButton* endingMeeting_button = new QPushButton;
     layout->addStretch();
-    endingMeeting_button->setText(u8"½áÊø»áÒé");
+    endingMeeting_button->setText(u8"ç»“æŸä¼šè®®");
     endingMeeting_button->setFixedSize(100,40);
     endingMeeting_button->setStyleSheet("QPushButton { border: 1px solid red; background-color: white; color: red; font: 16px;border-radius: 8px } QPushButton:hover { background-color: red; color: white;border-radius: 8px }");
 

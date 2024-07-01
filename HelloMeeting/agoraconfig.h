@@ -6,17 +6,16 @@
 class CAgoraConfig
 {
 public:
-    CAgoraConfig();
+	CAgoraConfig();
 
-    void setAppId(const QString &str);
-    QString getAppId();
-    void setChannelName(const QString &str);
-    QString getChannelName();
-    void setEnableVideo(bool bEnable);
-    bool getEnableVideo();
-    void setEnableAudio(bool bEnable);
-    bool getEnableAudio();
-
+	void setAppId(const QString& str);
+	QString getAppId();
+	void setChannelName(const QString& str);
+	QString getChannelName();
+	void setEnableVideo(bool bEnable);
+	bool getEnableVideo();
+	void setEnableAudio(bool bEnable);
+	bool getEnableAudio();
 
 	void setEnableBeauty(bool bEnable);
 	bool getEnableBeauty();
@@ -33,15 +32,15 @@ public:
 	void setSmoothness(int smooth);
 	int getSmoothness();
 
-    void getVideoResolution(int& width, int height);
-    int getFPS();
-    int getBitrate();
-    bool isCustomFPS();
-    bool isCustomBitrate();
-    bool isCustomResolution();
-    QString getAppToken();
+	void getVideoResolution(int& width, int height);
+	int getFPS();
+	int getBitrate();
+	bool isCustomFPS();
+	bool isCustomBitrate();
+	bool isCustomResolution();
+	QString getAppToken();
 private:
-    std::shared_ptr<QSettings>  m_spConfig;
+	std::shared_ptr<QSettings>  m_spConfig;
 };
 
 #endif // CAGORACONFIG_H

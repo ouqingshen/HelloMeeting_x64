@@ -27,9 +27,6 @@ private:
 	QLabel* m_pTitleTextLabel;
 
 	QPushButton* m_pMinBtn;
-	QPushButton * m_pMaxBtn;
-	QPushButton * m_pCloseBtn;
-
-
+	QPushButton* m_pMaxBtn;
+	QPushButton* m_pCloseBtn;
 };
-

@@ -2,54 +2,53 @@
 
 CAgoraConfig::CAgoraConfig()
 {
-   m_spConfig = std::make_shared<QSettings>("D:/agora_account/AgoraConfigOpenVideoCall.ini",QSettings::IniFormat);
+	m_spConfig = std::make_shared<QSettings>("D:/agora_account/AgoraConfigOpenVideoCall.ini", QSettings::IniFormat);
 }
 
-void CAgoraConfig::setAppId(const QString &str)
+void CAgoraConfig::setAppId(const QString& str)
 {
-    return m_spConfig->setValue("/BaseInfo/AppId",str);
+	return m_spConfig->setValue("/BaseInfo/AppId", str);
 }
 
 QString CAgoraConfig::getAppId()
 {
-    return m_spConfig->value("/BaseInfo/AppId").toString();
+	return m_spConfig->value("/BaseInfo/AppId").toString();
 }
 
 QString CAgoraConfig::getAppToken()
 {
-    return m_spConfig->value("/BaseInfo/AppToken").toString();
+	return m_spConfig->value("/BaseInfo/AppToken").toString();
 }
 
-void CAgoraConfig::setChannelName(const QString &str)
+void CAgoraConfig::setChannelName(const QString& str)
 {
-    return m_spConfig->setValue("/BaseInfo/CameraName",str);
+	return m_spConfig->setValue("/BaseInfo/CameraName", str);
 }
 
 QString CAgoraConfig::getChannelName()
 {
-    return m_spConfig->value("/BaseInfo/ChannelName").toString();
+	return m_spConfig->value("/BaseInfo/ChannelName").toString();
 }
 
 void CAgoraConfig::setEnableVideo(bool bEnable)
 {
-    return m_spConfig->setValue("/BaseInfo/EnableVideo",bEnable);
+	return m_spConfig->setValue("/BaseInfo/EnableVideo", bEnable);
 }
 
 bool CAgoraConfig::getEnableVideo()
 {
-    return m_spConfig->value("/BaseInfo/EnableVideo").toBool();
+	return m_spConfig->value("/BaseInfo/EnableVideo").toBool();
 }
 
 void CAgoraConfig::setEnableAudio(bool bEnable)
 {
-    return m_spConfig->setValue("/BaseInfo/EnableAudio",bEnable);
+	return m_spConfig->setValue("/BaseInfo/EnableAudio", bEnable);
 }
 
 bool CAgoraConfig::getEnableAudio()
 {
-    return m_spConfig->value("/BaseInfo/EnableAudio").toBool();
+	return m_spConfig->value("/BaseInfo/EnableAudio").toBool();
 }
-
 
 void CAgoraConfig::setEnableBeauty(bool bEnable)
 {
@@ -103,28 +102,28 @@ int CAgoraConfig::getSmoothness()
 
 void CAgoraConfig::getVideoResolution(int& width, int height)
 {
-    width  = m_spConfig->value("/VideoInfo/Width").toInt();
-    height = m_spConfig->value("/VideoInfo/Height").toInt();
+	width = m_spConfig->value("/VideoInfo/Width").toInt();
+	height = m_spConfig->value("/VideoInfo/Height").toInt();
 }
 
 int CAgoraConfig::getFPS()
 {
-    return m_spConfig->value("/VideoInfo/FPS").toInt();
+	return m_spConfig->value("/VideoInfo/FPS").toInt();
 }
 
 int CAgoraConfig::getBitrate()
 {
-    return m_spConfig->value("/VideoInfo/Bitrate").toInt();
+	return m_spConfig->value("/VideoInfo/Bitrate").toInt();
 }
 bool CAgoraConfig::isCustomFPS()
 {
-    return m_spConfig->value("/VideoInfo/CustomFPS").toBool();
+	return m_spConfig->value("/VideoInfo/CustomFPS").toBool();
 }
 bool CAgoraConfig::isCustomBitrate()
 {
-    return m_spConfig->value("/VideoInfo/CustomBitrate").toBool();
+	return m_spConfig->value("/VideoInfo/CustomBitrate").toBool();
 }
 bool CAgoraConfig::isCustomResolution()
 {
-    return m_spConfig->value("/VideoInfo/CustomResolution").toBool();
+	return m_spConfig->value("/VideoInfo/CustomResolution").toBool();
 }

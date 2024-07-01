@@ -7,16 +7,16 @@
 #include "CBottomBar.h"
 #include "CBigVideoWidget.h"
 #include "CAgoraObject.h"
+
 class CMainWidget : public CFraneLessWidgetBase
 {
 	Q_OBJECT
 
-
 public:
-	CMainWidget(QWidget *p =nullptr);
+	CMainWidget(QWidget* p = nullptr);
 	~CMainWidget();
 
-	void joinRoom(const QString roomId,const uint userName);
+	void joinRoom(const QString roomId, const uint userName);
 	void resizeEvent(QResizeEvent* event) override;
 	void wheelEvent(QWheelEvent* event) override;
 private:
@@ -37,4 +37,3 @@ private:
 	CBigVideoWidget* m_pBigVideoWidget = nullptr;
 	CAgoraObject* m_pAgora = nullptr;
 };
-

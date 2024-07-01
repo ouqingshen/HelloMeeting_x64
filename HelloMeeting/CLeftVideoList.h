@@ -1,5 +1,5 @@
 /*
-×ó±ßµÄÊÓÆµÁĞ±í´°¿Ú
+å·¦è¾¹çš„è§†é¢‘åˆ—è¡¨çª—å£
 */
 
 #pragma once
@@ -8,19 +8,16 @@
 #include "CSmallVideoWidget.h"
 
 class CLeftVideoList :
-    public QWidget
+	public QWidget
 {
-    Q_OBJECT
+	Q_OBJECT
 
 public:
-    CLeftVideoList(QWidget* p=nullptr);
-    ~CLeftVideoList();
+	CLeftVideoList(QWidget* p = nullptr);
+	~CLeftVideoList();
 
-
-    void addVideoWidget(CSmallVideoWidget * pSmall );
+	void addVideoWidget(CSmallVideoWidget* pSmall);
 
 private:
-    QListWidget* m_pListWidget = nullptr;
-
+	QListWidget* m_pListWidget = nullptr;
 };
-

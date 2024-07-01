@@ -5,22 +5,22 @@
 #include <qlabel.h>
 #include <qpushbutton.h>
 #include <QMouseEvent>
-class ShareScreenDialog:public QDialog
+class ShareScreenDialog :public QDialog
 {
 	Q_OBJECT
 
 public:
-	ShareScreenDialog(QDialog* parent=nullptr);
+	ShareScreenDialog(QDialog* parent = nullptr);
 	~ShareScreenDialog();
 	void initListWidget(const VecWindowShareInfo& vec);
 private:
 	void clearMap();
-	
+
 	void mousePressEvent(QMouseEvent* event)override;
 	void mouseMoveEvent(QMouseEvent* event)override;
 
 signals:
-	void sig_StartShare(int type,void* hwnd);
+	void sig_StartShare(int type, void* hwnd);
 	void sig_StopShare();
 
 private slots:
@@ -42,15 +42,11 @@ private:
 	QPushButton* m_pBtnCancel = nullptr;
 	QPushButton* m_pBtnStart = nullptr;
 
-
 	QPoint windowPos;
 	QPoint mousePos;
 	QPoint dPos;
 
-
 	int m_selectedType = -1;
 	map<int, void*> m_mapScreen;
 	map<int, void*> m_mapApp;
-
 };
-

@@ -1,5 +1,5 @@
 /*
-左侧小视频列表中的小视频窗口
+宸︿晶灏忚棰戝垪琛ㄤ腑鐨勫皬瑙嗛绐楀彛
 */
 #pragma once
 #include <qwidget.h>
@@ -8,8 +8,6 @@ class CSmallVideoWidget :public QWidget
 	Q_OBJECT
 
 public:
-	CSmallVideoWidget(QWidget * p=nullptr);
+	CSmallVideoWidget(QWidget* p = nullptr);
 	~CSmallVideoWidget();
-
 };
-

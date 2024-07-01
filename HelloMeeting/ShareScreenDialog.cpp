@@ -16,10 +16,10 @@ ShareScreenDialog::ShareScreenDialog(QDialog* parent)
 	m_pTitleWidget->setFixedHeight(42);
 	m_pTitleWidget->setStyleSheet("backgroud-color:rgb(54,54,54)");
 
-	setWindowTitle(u8"ÇëÑ¡ÔñÐèÒª¹²ÏíµÄÄÚÈÝ");
+	setWindowTitle(u8"è¯·é€‰æ‹©éœ€è¦å…±äº«çš„å†…å®¹");
 
 	m_pLabel_Screen = new QLabel(this);
-	m_pLabel_Screen->setText(u8"×ÀÃæ");
+	m_pLabel_Screen->setText(u8"æ¡Œé¢");
 	QVBoxLayout* vBoxLayout = new QVBoxLayout(this);
 	
 
@@ -38,7 +38,7 @@ ShareScreenDialog::ShareScreenDialog(QDialog* parent)
 
 
 	m_pLabel_APP = new QLabel(this);
-	m_pLabel_APP->setText(u8"Ó¦ÓÃ");
+	m_pLabel_APP->setText(u8"åº”ç”¨");
 
 	m_pLWAPP = new QListWidget(this);
 	m_pLWAPP->setSpacing(LWSPACE);
@@ -50,10 +50,10 @@ ShareScreenDialog::ShareScreenDialog(QDialog* parent)
 	m_pLWAPP->setFlow(QListView::LeftToRight);
 
 	m_pBtnStart = new QPushButton(this);
-	m_pBtnStart->setText(u8"¿ªÊ¼¹²Ïí");
+	m_pBtnStart->setText(u8"å¼€å§‹å…±äº«");
 
 	m_pBtnCancel = new QPushButton(this);
-	m_pBtnCancel->setText(u8"È¡Ïû¹²Ïí");
+	m_pBtnCancel->setText(u8"å–æ¶ˆå…±äº«");
 
 	vBoxLayout->addWidget(m_pLabel_Screen);
 	vBoxLayout->addWidget(m_pLWScreen);
@@ -114,11 +114,11 @@ void ShareScreenDialog::clearMap()
 void ShareScreenDialog::mousePressEvent(QMouseEvent* event)
 {
 	if (event->button() == Qt::LeftButton) {
-		// ¼ÇÂ¼Êó±êµã»÷Ê±µÄÎ»ÖÃ
+		// è®°å½•é¼ æ ‡ç‚¹å‡»æ—¶çš„ä½ç½®
 		mousePos = event->globalPos();
-		// ¼ÇÂ¼´°¿Úµ±Ç°µÄÎ»ÖÃ
+		// è®°å½•çª—å£å½“å‰çš„ä½ç½®
 		windowPos = this->pos();
-		// ¼ÆËãÊó±êÏà¶ÔÓÚ´°¿ÚµÄÎ»ÖÃ
+		// è®¡ç®—é¼ æ ‡ç›¸å¯¹äºŽçª—å£çš„ä½ç½®
 		dPos = mousePos - windowPos;
 	}
 }
@@ -126,9 +126,9 @@ void ShareScreenDialog::mousePressEvent(QMouseEvent* event)
 void ShareScreenDialog::mouseMoveEvent(QMouseEvent* event)
 {
 	if (event->buttons() & Qt::LeftButton) {
-		// ¼ÆËã´°¿ÚÓ¦¸ÃÒÆ¶¯µ½µÄÎ»ÖÃ
+		// è®¡ç®—çª—å£åº”è¯¥ç§»åŠ¨åˆ°çš„ä½ç½®
 		QPoint newPos = event->globalPos() - dPos;
-		// ÒÆ¶¯´°¿Ú
+		// ç§»åŠ¨çª—å£
 		this->move(newPos);
 	}
 }

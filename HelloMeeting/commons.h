@@ -3,10 +3,9 @@
 #include <QCryptographicHash>
 #include <QPixmap>
 using namespace std;
-//左侧小视频窗口的宽高
+//宸︿晶灏忚棰戠獥鍙ｇ殑瀹介珮
 #define SMALL_VIDEO_WIDTH  300
 #define SMALL_VIDEO_HEIGHT 225
-
 
 #define SHARE_WINDOW_ITEM_WIDTH 200
 #define SHARE_WINDOW_ITEM_HENGHT 150
@@ -19,8 +18,7 @@ struct window_share_info
 		Window
 	};
 
-
-	void *hwmd;
+	void* hwmd;
 	std::string name;
 	WindowType windowType;
 	QPixmap pixmap;
